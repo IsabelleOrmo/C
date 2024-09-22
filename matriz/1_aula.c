@@ -1,43 +1,43 @@
-/*Construir um programa que faz a leitura de uma matriz
-quadrada de reais de tamanho N por N (máximo 20 x 20).
-Somar todos os elementos da diagonal principal.
-Imprimir a matriz lida e o valor da soma obtido.*/
+/*Faça um algoritmo que leia uma matriz M 5x5 de númeors
+reias. O programa deve determinar o maior número da
+matriz e a sua posição (linha, coluna).*/
 
-#include <stdio.h>
-#include <stdbool.h>
 
-int main() {
-   int n, soma = 0;
-   bool valida = true;
+#include<stdio.h>
+#define T 5
+int main () {
 
-   while(valida == true ) {
-   printf("N elementos? ");
-   scanf("%d", &n);
-   if(n <= 20){
-    valida = false;
-   }}
+    float m[T][T], maior;
+    int coluna, linha;
 
-    int m[n][n];
-    printf("Insira os valores da matriz: ");
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            scanf("%d", &m[i][j]);
+    printf("Valores da matriz: \n");
+    for(int i = 0; i<T; i++){
+        for(int j = 0; j <T; j++){
+            printf("Linha %d Coluna %d: ", i, j);
+            scanf("%f", &m[i][j]);
         }
     }
 
-    printf("Matriz: \n");
-    for (int i = 0; i < n; i++) {
-        printf("\n\t\n");
-        for (int j = 0; j < n; j++) {
-            printf("%d ", m[i][j]);
+    maior = m[0][0];
+
+    for(int i = 0; i<T; i++){
+        for(int j = 0; j <T; j++){
+            if(m[i][j] >= maior){
+                maior = m[i][j];
+                coluna = j;
+                linha = i;
+            }
     }}
+    
+    for(int i = 0; i<T; i++){
+        for(int j = 0; j <T; j++){
+            printf("%.2f ", m[i][j]);
+    }
+        printf("\n");
+    }
 
-     for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-                if(j==i){
-                    soma = soma + m[i][j];
-    }}}
+    printf("\n O maior valor da matriz é %.2f na posicao %d %d", maior, linha, coluna);
 
-    printf("\n A soma da diagonal da matris é %d ", soma);
     return 0;
+
 }
