@@ -69,6 +69,20 @@ void exibir(struct fila* f){
     printf("\nFim\n");
 }
 
+void liberarFila(struct fila* f){
+    struct No* atual = f->first;
+    while (atual!=NULL)
+    {
+        struct No* temp = atual;
+        atual = temp->next;
+        free(temp);
+    }
+
+    f->first = NULL;
+    f->last = NULL;
+    
+}
+
 int main(){
     struct fila* f =(struct fila*)malloc(sizeof(struct fila));
     f->first = NULL;
@@ -96,7 +110,10 @@ int main(){
         {
            exibir(f);
         }
-        
     }
+
+    liberarFila(f);
+    free(f);
+    
     return 0;
 }
